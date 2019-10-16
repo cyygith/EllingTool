@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class QueryOracleTable {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@127.0.0.1:1521:testdb";
+	private String url = "jdbc:oracle:thin:@127.0.0.1:1521:testdb1";
 	private String user = "test";
 	private String password = "test";
 	private static Connection conn = null;
