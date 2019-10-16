@@ -1,0 +1,16 @@
+<xml>
+	<select id="getTable">
+		select t.* from TABLE5 s,TABLE6 t where s.id = t.id
+	</select>
+	<select id="getTable2">
+		select t.* from TABLE7 s left join TABLE8 d on d.id = s.id
+	</select>
+	<select id="getTable2">
+		select t.* from TABLE7 s left join TABLE88 d on d.id = s.id
+	</select>
+	<select id="getTable3">
+		select t.* from TABLE9 s where t.id in 
+		(select dept_id from TABLE10 dd left 
+		join TABLE11 uu where dd.id = uu.id)
+	</select>
+</xml>
