@@ -9,7 +9,7 @@ public class TestSync {
 		testSync.RunnableTest();//runnable test
 	}
 	/**
-	 * Thread  Ïß³ÌµÄ²âÊÔ·½·¨
+	 * Thread  çº¿ç¨‹çš„æµ‹è¯•æ–¹æ³•
 	 */
 	public  void threadTest(){
 		for(int i=0;i<5;i++){
@@ -18,7 +18,7 @@ public class TestSync {
 		}
 	}
 	/**
-	 * runnable  Ïß³ÌµÄ²âÊÔ·½·¨
+	 * runnable  çº¿ç¨‹çš„æµ‹è¯•æ–¹æ³•
 	 */
 	public  void RunnableTest(){
 		MyRunThread mythread = new MyRunThread("");

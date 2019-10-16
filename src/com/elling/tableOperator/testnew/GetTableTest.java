@@ -13,7 +13,7 @@ import com.elling.tableOperator.utils.StringBufUtil;
 import com.elling.tableOperator.utils.StringUtil;
 
 /**
- * ²âÊÔ·ÖÎöÊı¾İ¿âÖĞ´æ´¢¹ı³Ì»òÕßÎÄ¼şÖĞÓĞÓÃµ½µÄ±í
+ * æµ‹è¯•åˆ†ææ•°æ®åº“ä¸­å­˜å‚¨è¿‡ç¨‹æˆ–è€…æ–‡ä»¶ä¸­æœ‰ç”¨åˆ°çš„è¡¨
  * @author Administrator
  *
  */
@@ -23,35 +23,35 @@ public class GetTableTest {
 	public static void main(String[] args) {
 		GetTableTest test = new GetTableTest();
 		String sourcePath = "E:\\WORK\\workspace\\EllingTool\\src";
-		//´ÓÊı¾İ¿âÖĞÈ¡´æ´¢¹ı³Ì²âÊÔ
+		//ä»æ•°æ®åº“ä¸­å–å­˜å‚¨è¿‡ç¨‹æµ‹è¯•
 		String[] pNames= new String[] {"SP_INTND_SS_LOAD"};
 		test.getTableFromType("2", pNames, sourcePath);
 		
-		//´Ó´ÅÅÌdiskÖĞÈ¡sb
+		//ä»ç£ç›˜diskä¸­å–sb
 //		test.getTableFromType("1", pNames, sourcePath);
 	}
 	/**
-	 * ¸ù¾İÊı¾İÁ÷À´Ô´ÇşµÀ½øĞĞ·ÖÎöÈ¡±í¡¢´æ´¢¹ı³Ì¡¢º¯ÊıµÈ
-	 * @param type  1£º´Ó´ÅÅÌÖĞÈ¡Êı    2£º´ÓÊı¾İ¿âÖĞÈ¡´æ´¢¹ı³ÌµÄ¶¨Òå
+	 * æ ¹æ®æ•°æ®æµæ¥æºæ¸ é“è¿›è¡Œåˆ†æå–è¡¨ã€å­˜å‚¨è¿‡ç¨‹ã€å‡½æ•°ç­‰
+	 * @param type  1ï¼šä»ç£ç›˜ä¸­å–æ•°    2ï¼šä»æ•°æ®åº“ä¸­å–å­˜å‚¨è¿‡ç¨‹çš„å®šä¹‰
 	 * @param pNames
 	 * @param pftype
 	 */
 	public void getTableFromType(String type,String[] pNames,String sourcePath) {
 		GetTableFromSb getTableFromSb = new GetTableFromSb();
 		FileUtil fileUtil = new FileUtil();
-		HashMap<String,Object> allTableMap = new HashMap();//ËùÓĞ±íµÄÏà¹Ø±í
-		HashMap<String,Object> insertMap = new HashMap();//insertµÄÏà¹Ø±í
-		HashMap<String,Object> updateMap = new HashMap();//updateµÄÏà¹Ø±í
-		HashMap<String,Object> mergeMap = new HashMap();//mergeµÄÏà¹Ø±í
-		HashMap<String,Object> deleteMap = new HashMap();//deleteµÄÏà¹Ø±í
-		HashMap<String,Object> selectMap = new HashMap();//selectµÄÏà¹Ø±í
-		HashMap<String,Object> procedureMap = new HashMap();//procedureµÄÏà¹Ø±í
-		HashMap<String,Object> functionMap = new HashMap();//functionµÄÏà¹Ø±í
+		HashMap<String,Object> allTableMap = new HashMap();//æ‰€æœ‰è¡¨çš„ç›¸å…³è¡¨
+		HashMap<String,Object> insertMap = new HashMap();//insertçš„ç›¸å…³è¡¨
+		HashMap<String,Object> updateMap = new HashMap();//updateçš„ç›¸å…³è¡¨
+		HashMap<String,Object> mergeMap = new HashMap();//mergeçš„ç›¸å…³è¡¨
+		HashMap<String,Object> deleteMap = new HashMap();//deleteçš„ç›¸å…³è¡¨
+		HashMap<String,Object> selectMap = new HashMap();//selectçš„ç›¸å…³è¡¨
+		HashMap<String,Object> procedureMap = new HashMap();//procedureçš„ç›¸å…³è¡¨
+		HashMap<String,Object> functionMap = new HashMap();//functionçš„ç›¸å…³è¡¨
 		
-		//1¡¢²Ù×÷¶ÔÓ¦µÄ·ÖÎö±í²Ù×÷
+		//1ã€æ“ä½œå¯¹åº”çš„åˆ†æè¡¨æ“ä½œ
 		StringBuffer sb = new StringBuffer();
 		if(type.equals("1")) {
-			System.out.println("Ö¸¶¨´æ´¢¹ı³ÌµÄ¸öÊı£º" + pNames.length);
+			System.out.println("æŒ‡å®šå­˜å‚¨è¿‡ç¨‹çš„ä¸ªæ•°ï¼š" + pNames.length);
 			for(int i=0,len=pNames.length;i<len;i++) {
 				sb = StringBufUtil.getSbFromDatabase(pNames[i]);
 				getTableFromSb.getAllTable(sb.toString());
@@ -59,14 +59,14 @@ public class GetTableTest {
 		}else if(type.equals("2")){
 			fileUtil.find(sourcePath, 1, "sql|xml");
 			ArrayList list = fileUtil.getList();
-			System.out.println("Ö¸¶¨ÎÄ¼şµÄ¸öÊı£º" + list.size());
+			System.out.println("æŒ‡å®šæ–‡ä»¶çš„ä¸ªæ•°ï¼š" + list.size());
 			for(int i=0,len=list.size();i<len;i++) {
 				sb = StringBufUtil.getSbFromDisk(list.get(i).toString(),StringBufUtil.NO_KEEPFORMAT);
 				getTableFromSb.getAllTable(sb.toString());
 			}
 		}
 		
-		//2¡¢È¡¶ÔÓ¦µÄ±í·ÅÈë¶ÔÓ¦µÄmapÖĞ
+		//2ã€å–å¯¹åº”çš„è¡¨æ”¾å…¥å¯¹åº”çš„mapä¸­
 		insertMap.putAll(getTableFromSb.getInsertMap());
 		updateMap.putAll(getTableFromSb.getUpdateMap());
 		mergeMap.putAll(getTableFromSb.getMergeMap());
@@ -76,63 +76,63 @@ public class GetTableTest {
 		functionMap.putAll(getTableFromSb.getFunctionMap());
 		allTableMap.putAll(getTableFromSb.getAllTableMap());
 		
-		//3¡¢´òÓ¡¶ÔÓ¦±íÖĞµÄmapĞÅÏ¢
+		//3ã€æ‰“å°å¯¹åº”è¡¨ä¸­çš„mapä¿¡æ¯
 		Iterator insertIt= insertMap.entrySet().iterator();
-		System.out.println("×Ü¹²insertµÄ±íÓĞ¶àÉÙ¸ö£º"+insertMap.size());
+		System.out.println("æ€»å…±insertçš„è¡¨æœ‰å¤šå°‘ä¸ªï¼š"+insertMap.size());
 		while(insertIt.hasNext()) {
 			Map.Entry entry = (Map.Entry)insertIt.next();
 			System.out.println(entry.getValue());
 		}
 		
 		Iterator updateIt= updateMap.entrySet().iterator();
-		System.out.println("×Ü¹²updateµÄ±íÓĞ¶àÉÙ¸ö£º"+updateMap.size());
+		System.out.println("æ€»å…±updateçš„è¡¨æœ‰å¤šå°‘ä¸ªï¼š"+updateMap.size());
 		while(updateIt.hasNext()) {
 			Map.Entry entry = (Map.Entry)updateIt.next();
 			System.out.println(entry.getValue());
 		}
 		
 		Iterator mergeIt= mergeMap.entrySet().iterator();
-		System.out.println("×Ü¹²mergeµÄ±íÓĞ¶àÉÙ¸ö£º"+mergeMap.size());
+		System.out.println("æ€»å…±mergeçš„è¡¨æœ‰å¤šå°‘ä¸ªï¼š"+mergeMap.size());
 		while(mergeIt.hasNext()) {
 			Map.Entry entry = (Map.Entry)mergeIt.next();
 			System.out.println(entry.getValue());
 		}
 		
 		Iterator deleteIt= deleteMap.entrySet().iterator();
-		System.out.println("×Ü¹²deleteµÄ±íÓĞ¶àÉÙ¸ö£º"+deleteMap.size());
+		System.out.println("æ€»å…±deleteçš„è¡¨æœ‰å¤šå°‘ä¸ªï¼š"+deleteMap.size());
 		while(deleteIt.hasNext()) {
 			Map.Entry entry = (Map.Entry)deleteIt.next();
 			System.out.println(entry.getValue());
 		}
 		
 		Iterator selectIt= selectMap.entrySet().iterator();
-		System.out.println("×Ü¹²selectµÄ±íÓĞ¶àÉÙ¸ö£º"+selectMap.size());
+		System.out.println("æ€»å…±selectçš„è¡¨æœ‰å¤šå°‘ä¸ªï¼š"+selectMap.size());
 		while(selectIt.hasNext()) {
 			Map.Entry entry = (Map.Entry)selectIt.next();
 			System.out.println(entry.getValue());
 		}
 		
 		Iterator procedureIt= procedureMap.entrySet().iterator();
-		System.out.println("×Ü¹²procedureÓĞ¶àÉÙ¸ö£º"+procedureMap.size());
+		System.out.println("æ€»å…±procedureæœ‰å¤šå°‘ä¸ªï¼š"+procedureMap.size());
 		while(procedureIt.hasNext()) {
 			Map.Entry entry = (Map.Entry)procedureIt.next();
 			System.out.println(entry.getValue());
 		}
 		
 		Iterator functionIt= functionMap.entrySet().iterator();
-		System.out.println("×Ü¹²functionÓĞ¶àÉÙ¸ö£º"+functionMap.size());
+		System.out.println("æ€»å…±functionæœ‰å¤šå°‘ä¸ªï¼š"+functionMap.size());
 		while(functionIt.hasNext()) {
 			Map.Entry entry = (Map.Entry)functionIt.next();
 			System.out.println(entry.getValue());
 		}
 		
-		//4.²éÑ¯³öËùÓĞµÄ±íµÄ×¢ÊÍ
+		//4.æŸ¥è¯¢å‡ºæ‰€æœ‰çš„è¡¨çš„æ³¨é‡Š
 		if(allTableMap.size()>0) {
 			String tableParam = StringUtil.join(allTableMap).toString();
 			String tablesql = "SELECT T.TABLE_NAME,T.COMMENTS FROM USER_TAB_COMMENTS T WHERE T.TABLE_NAME IN ("+tableParam+")";
 			QueryOracleTable query = new QueryOracleTable();
 			List<Map<String,Object>> tableList = query.getBySql(tablesql, null);
-			System.out.println("×Ü¹²Éæ¼°¶àÉÙ¸ö±í£º"+allTableMap.size());
+			System.out.println("æ€»å…±æ¶‰åŠå¤šå°‘ä¸ªè¡¨ï¼š"+allTableMap.size());
 			for(int i=0,len=tableList.size();i<len;i++) {
 				Map resultMap = tableList.get(i);
 				System.out.println(resultMap.get("TABLE_NAME")+"\t"+resultMap.get("COMMENTS"));

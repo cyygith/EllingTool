@@ -7,14 +7,14 @@ import java.util.regex.Pattern;
 import com.elling.tableOperator.utils.StringUtil;
 
 /**
- * ÕıÔò±í´ïÌæ»»
- * ¹¦ÄÜ£ºÆ¥ÅäÊäÈëµÄ×Ö·ûÊı×é£¬Ìæ»»µô¶ÔÓ¦Êı×éµÄ×Ö·û´®
- * ÖÁÓÚÎªÊ²Ã´Ê¹ÓÃÕâ¸öÌæ»»ÊÇÒòÎª¾­¹ı·ÖÎö£¬ÄÇĞ©insert/update/merge/delete ÕâĞ©±íÈ«²¿¶¼ÊÇÒªÌæ»»µôµÄ£¬µ«ÊÇÓĞÒ»Ğ©±ÈÈç´íÎóÈÕÖ¾±í¡¢¸ú×ÙÈÕÖ¾±íµÈ¾Í²»ĞèÒªÌæ»»£¬
- * È»ºóÓĞĞ©´æ´¢¹ı³Ì¡¢·½·¨¶¼ÊÇ²Ù×÷¹«¹²ÀàµÄÒ²²»ĞèÒªÌáÌæ»»£¬ËùÒÔ×ÛºÏ¿¼ÂÇ³öÀ´£¬ÕâÀïÇ°ÎÄ·ÖÎö±È½ÏÖØÒª£¬Ìæ»»µÄ»°¾ÍÊÇÖ±½Ó½«ĞèÒªÌæ»»µô±í±íÂŞÁĞ³öÀ´ÔÙ´¦Àí¾Í¿ÉÒÔÁË
- * 1£©¿ÉÒÔÊ¹ÓÃÇ°ÃæµÄÀàGetTableFromSbÈ¡³ö²Ù×÷¶¼ÓĞÄÄĞ©±í¡¢´æ´¢¹ı³Ì¡¢º¯Êı£¬µ±È»ĞèÒª·ÖÎöÒ»ÏÂÄÃĞ©ĞèÒªÌæ»»£¬ÄÄĞ©²»ĞèÒªÌæ»»
- * 2£©È»ºó½«ĞèÒªÌæ»»±í¡¢´æ´¢¹ı³Ì¡¢functionÁĞ³öÀ´£¬·Åµ½Ò»¸ö×Ö·ûÊı×éÖĞarr£¬
- * 3£©Ê¹ÓÃStringUtil.joinReg(arr),È»ºóÊ¹ÓÃÕıÔò±í´ïÊ½(aaaa|bbbb|cccc)ÕâÖÖ·½Ê½²éÑ¯È»ºóÌæ»»³ÉÄãĞèÒªÌæ»»£¨ÕâÀïÓÉÍâ²¿´«ÈëÒ»¸ömap£©
- * 4£©Ê¹ÓÃÌæ»»µômap.get(group(1))
+ * æ­£åˆ™è¡¨è¾¾æ›¿æ¢
+ * åŠŸèƒ½ï¼šåŒ¹é…è¾“å…¥çš„å­—ç¬¦æ•°ç»„ï¼Œæ›¿æ¢æ‰å¯¹åº”æ•°ç»„çš„å­—ç¬¦ä¸²
+ * è‡³äºä¸ºä»€ä¹ˆä½¿ç”¨è¿™ä¸ªæ›¿æ¢æ˜¯å› ä¸ºç»è¿‡åˆ†æï¼Œé‚£äº›insert/update/merge/delete è¿™äº›è¡¨å…¨éƒ¨éƒ½æ˜¯è¦æ›¿æ¢æ‰çš„ï¼Œä½†æ˜¯æœ‰ä¸€äº›æ¯”å¦‚é”™è¯¯æ—¥å¿—è¡¨ã€è·Ÿè¸ªæ—¥å¿—è¡¨ç­‰å°±ä¸éœ€è¦æ›¿æ¢ï¼Œ
+ * ç„¶åæœ‰äº›å­˜å‚¨è¿‡ç¨‹ã€æ–¹æ³•éƒ½æ˜¯æ“ä½œå…¬å…±ç±»çš„ä¹Ÿä¸éœ€è¦ææ›¿æ¢ï¼Œæ‰€ä»¥ç»¼åˆè€ƒè™‘å‡ºæ¥ï¼Œè¿™é‡Œå‰æ–‡åˆ†ææ¯”è¾ƒé‡è¦ï¼Œæ›¿æ¢çš„è¯å°±æ˜¯ç›´æ¥å°†éœ€è¦æ›¿æ¢æ‰è¡¨è¡¨ç½—åˆ—å‡ºæ¥å†å¤„ç†å°±å¯ä»¥äº†
+ * 1ï¼‰å¯ä»¥ä½¿ç”¨å‰é¢çš„ç±»GetTableFromSbå–å‡ºæ“ä½œéƒ½æœ‰å“ªäº›è¡¨ã€å­˜å‚¨è¿‡ç¨‹ã€å‡½æ•°ï¼Œå½“ç„¶éœ€è¦åˆ†æä¸€ä¸‹æ‹¿äº›éœ€è¦æ›¿æ¢ï¼Œå“ªäº›ä¸éœ€è¦æ›¿æ¢
+ * 2ï¼‰ç„¶åå°†éœ€è¦æ›¿æ¢è¡¨ã€å­˜å‚¨è¿‡ç¨‹ã€functionåˆ—å‡ºæ¥ï¼Œæ”¾åˆ°ä¸€ä¸ªå­—ç¬¦æ•°ç»„ä¸­arrï¼Œ
+ * 3ï¼‰ä½¿ç”¨StringUtil.joinReg(arr),ç„¶åä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼(aaaa|bbbb|cccc)è¿™ç§æ–¹å¼æŸ¥è¯¢ç„¶åæ›¿æ¢æˆä½ éœ€è¦æ›¿æ¢ï¼ˆè¿™é‡Œç”±å¤–éƒ¨ä¼ å…¥ä¸€ä¸ªmapï¼‰
+ * 4ï¼‰ä½¿ç”¨æ›¿æ¢æ‰map.get(group(1))
  * 
  * @author cyy
  * @date  20191010
@@ -22,14 +22,14 @@ import com.elling.tableOperator.utils.StringUtil;
 public class UpdateXmlUseReg {
 	
 	/**
-	 * »ñÈ¡´«µİ¹ıÀ´µÄĞèÒªÌæ»»µÄ×Ö·û´®Êı×é£¬È»ºóÌæ»»µô
+	 * è·å–ä¼ é€’è¿‡æ¥çš„éœ€è¦æ›¿æ¢çš„å­—ç¬¦ä¸²æ•°ç»„ï¼Œç„¶åæ›¿æ¢æ‰
 	 * 
-	 * ¸ñÊ½ÈçÏÂ£º
-	 *  1)ÀıÈç£º(TABLE1|SYS_USER|SYS_MENU|SP_GET_REPL|SF_VIEW)
-	 * 	2)ÕıÔò£º(XXX|XXXX)  -->È¡³ögroup(1)
-	 * @param sb		ĞèÒªÕıÔò±í´ïÊ½²éÑ¯µÄ´®
-	 * @param arr		ĞèÒªÌæ»»µÄÊı×é
-	 * @param changeMap	ĞèÒªÌæ»»³ÉµÄmap
+	 * æ ¼å¼å¦‚ä¸‹ï¼š
+	 *  1)ä¾‹å¦‚ï¼š(TABLE1|SYS_USER|SYS_MENU|SP_GET_REPL|SF_VIEW)
+	 * 	2)æ­£åˆ™ï¼š(XXX|XXXX)  -->å–å‡ºgroup(1)
+	 * @param sb		éœ€è¦æ­£åˆ™è¡¨è¾¾å¼æŸ¥è¯¢çš„ä¸²
+	 * @param arr		éœ€è¦æ›¿æ¢çš„æ•°ç»„
+	 * @param changeMap	éœ€è¦æ›¿æ¢æˆçš„map
 	 * @return
 	 */
 	public StringBuffer operateXml(StringBuffer sb,String[] arr,HashMap changeMap) {
@@ -40,22 +40,22 @@ public class UpdateXmlUseReg {
 		Matcher m = p.matcher(sb);
 		int start = 0;
 		int end = 0;
-		int count = 0;//×Ü¹²¸üĞÂÁË¶àÉÙ¸ö
+		int count = 0;//æ€»å…±æ›´æ–°äº†å¤šå°‘ä¸ª
 		while(m.find()) {
 			count++;
 			String tableName = "";
 			String chuan = m.group(0);
 			tableName = m.group(1);
-			System.out.println("²éÑ¯µ½µÄ´®£º" + chuan+",±íÃû£º" + tableName);
+			System.out.println("æŸ¥è¯¢åˆ°çš„ä¸²ï¼š" + chuan+",è¡¨åï¼š" + tableName);
 			
 			start = m.start(1);
 			end = m.end(1);
-			System.out.println("¿ªÊ¼Î»ÖÃ£º"+start+",½áÊøÎ»ÖÃ£º"+end+",×Ó´®£º"+sb.substring(start, end));
+			System.out.println("å¼€å§‹ä½ç½®ï¼š"+start+",ç»“æŸä½ç½®ï¼š"+end+",å­ä¸²ï¼š"+sb.substring(start, end));
 			
 			m.appendReplacement(sbb, changeMap.get(tableName.toUpperCase())+"");
 		}
 		m.appendTail(sbb);
-		System.out.println("×Ü¹²Ìæ»»ÁË¶àÉÙ¸ö£º"+count+",Æ¥ÅäµÄ´®£º"+pattern);
+		System.out.println("æ€»å…±æ›¿æ¢äº†å¤šå°‘ä¸ªï¼š"+count+",åŒ¹é…çš„ä¸²ï¼š"+pattern);
 		
 		return sbb;
 	}

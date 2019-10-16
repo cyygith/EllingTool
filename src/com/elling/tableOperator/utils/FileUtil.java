@@ -16,11 +16,11 @@ public class FileUtil {
 	private  ArrayList<Map> listMap = new ArrayList<Map>();
 	
 	/**
-	 * »ñÈ¡ÎÄ¼şµÄÂ·¾¶£¬²¢ÇÒ¸ù¾İÎÄ¼şÀàĞÍÈ¡³öÖ¸¶¨µÄÎÄ¼ş·Åµ½listÖĞ
+	 * è·å–æ–‡ä»¶çš„è·¯å¾„ï¼Œå¹¶ä¸”æ ¹æ®æ–‡ä»¶ç±»å‹å–å‡ºæŒ‡å®šçš„æ–‡ä»¶æ”¾åˆ°listä¸­
 	 * 
-	 * @param path		ÎÄ¼şÂ·¾¶
-	 * @param depth		ÎÄ¼şÉî¶È	
-	 * @param filetype  ÎÄ¼şÀàĞÍ
+	 * @param path		æ–‡ä»¶è·¯å¾„
+	 * @param depth		æ–‡ä»¶æ·±åº¦	
+	 * @param filetype  æ–‡ä»¶ç±»å‹
 	 */
 	public void find(String path,int depth,String filetype){
 		int filecount = 0;
@@ -56,7 +56,7 @@ public class FileUtil {
 						System.out.println(name);
 						
 						if(name.matches(".*[\\.]+("+filetype+")")){
-							list.add(file.getCanonicalPath());   //È¡³öÎÄ¼şµÄ¾ßÌåÂ·¾¶
+							list.add(file.getCanonicalPath());   //å–å‡ºæ–‡ä»¶çš„å…·ä½“è·¯å¾„
 							Map m = new HashMap();
 							m.put(name, file.getCanonicalPath());
 							listMap.add(m);
@@ -66,7 +66,7 @@ public class FileUtil {
 				}
 			}else{
 				if(dirFile.getName().matches(".*[\\.]+("+filetype+")")){
-					list.add(dirFile.getCanonicalPath());   //È¡³öÎÄ¼şµÄ¾ßÌåÂ·¾¶
+					list.add(dirFile.getCanonicalPath());   //å–å‡ºæ–‡ä»¶çš„å…·ä½“è·¯å¾„
 					Map m = new HashMap();
 					m.put(dirFile.getName(), dirFile.getCanonicalPath());
 					listMap.add(m);
@@ -81,10 +81,10 @@ public class FileUtil {
 	}
 	
 	/**
-	 * ±£´æÎÄ¼ş
-	 * @param path  Â·¾¶
-	 * @param name  ÎÄ¼şÃû
-	 * @param sb	ÎÄ¼şÄÚÈİ
+	 * ä¿å­˜æ–‡ä»¶
+	 * @param path  è·¯å¾„
+	 * @param name  æ–‡ä»¶å
+	 * @param sb	æ–‡ä»¶å†…å®¹
 	 */
 	public static void saveFile(String path,String name,StringBuffer sb) {
 		File dirFile = new File(path+File.separator+name);
@@ -102,7 +102,7 @@ public class FileUtil {
 		}
 	}
 	/**
-	 * »ñÈ¡
+	 * è·å–
 	 * @return
 	 */
 	public ArrayList getList(){
@@ -110,7 +110,7 @@ public class FileUtil {
 	}
 	
 	/**
-	 * »ñÈ¡
+	 * è·å–
 	 * @return
 	 */
 	public ArrayList getListMap(){
@@ -118,15 +118,15 @@ public class FileUtil {
 	}
 	
 	/**
-	 * ²âÊÔ
+	 * æµ‹è¯•
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		FileUtil util = new FileUtil();
 //		find("E:\\WORK\\workspace\\MyProject\\src",depth,filetype);
-//		find("C:\\Users\\Administrator\\Desktop\\ÉÏÏßÏà¹Ø\\PopUpOnline\\proj\\emaster",depth,filetype);
-		util.find("C:\\Users\\Administrator\\Desktop\\ÉÏÏßÏà¹Ø\\PopUpOnline\\proj\\ellingmaster",1,"xml|html");
-		System.out.println("Ö¸¶¨ÎÄ¼şµÄ¸öÊı£º"+util.getList().size());
+//		find("C:\\Users\\Administrator\\Desktop\\ä¸Šçº¿ç›¸å…³\\PopUpOnline\\proj\\emaster",depth,filetype);
+		util.find("C:\\Users\\Administrator\\Desktop\\ä¸Šçº¿ç›¸å…³\\PopUpOnline\\proj\\ellingmaster",1,"xml|html");
+		System.out.println("æŒ‡å®šæ–‡ä»¶çš„ä¸ªæ•°ï¼š"+util.getList().size());
 		List list = util.getList();
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i));

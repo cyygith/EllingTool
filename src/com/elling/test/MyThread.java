@@ -8,7 +8,7 @@ public class MyThread extends Thread {
 	}
 	
 	public void run() {
-		System.out.println(this.name +":½ø³Ì¿ªÊ¼Ö´ĞĞ-----------------");
+		System.out.println(this.name +":è¿›ç¨‹å¼€å§‹æ‰§è¡Œ-----------------");
 		SyncO syncO = new SyncO(this.name);
 		syncO.doFirstThing();
 		
@@ -16,7 +16,7 @@ public class MyThread extends Thread {
 		
 		syncO.doAnother();
 		
-		System.out.println(this.name +":½ø³Ì½áÊøÖ´ĞĞ-----------------");
+		System.out.println(this.name +":è¿›ç¨‹ç»“æŸæ‰§è¡Œ-----------------");
 	}
 	
 }

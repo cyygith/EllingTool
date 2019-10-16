@@ -5,29 +5,29 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * »ñÈ¡ÎÄ¼şÖĞ²Ù×÷µÄ±íÃû
- * ¹¦ÄÜ£º
- * 	½«ÖÆ¶¨ÎÄ¼ş£¨±ÈÈç£ºxml¡¢html¡¢java£©ÖĞÉæ¼°µ½±íµÄ²Ù×÷£¨ÕâÀïµÄ²Ù×÷£¬Ö¸µÄÊÇÆäÖĞµÄinsert¡¢update¡¢merge¡¢delete¡¢selete£©ÌáÈ¡³öÀ´
- * ¹ıÂË£¬ÎªµÄÊÇ½«±í¿ìËÙÌáÈ¡£¬·½±ã·ÖÎöÕâĞ©ÎÄ¼ş×Ü¹²²Ù×÷ÁËÄÄĞ©±í
- * ÕâÀïinsert¡¢update¡¢merge¡¢deleteºÏÆğÀ´²éÑ¯£¬ÕâĞ©²Ù×÷Ò»°ã¾Í¸úÔÚºóÃæµÄÒ»ÕÅ±í£¬²»»á³öÏÖÒ»ĞĞ²Ù×÷¶àÕÅ±íµÄÇé¿ö£¬ËùÒÔºÏÔÚÒ»Æğ
- * ÕâÀïµÄprocedure¡¢functionÊÇÓĞ¾ßÌåÌØÕ÷µÄ£¬Ã¿¸öÏµÍ³¶¼²»Ò»Ñù£¬ËùÒÔÕâÀïĞèÒªĞŞ¸Ä£¬ÈçÏÖÔÚÏîÄ¿´æ´¢¹ı³ÌÒÔSP_¿ªÍ·£¬º¯ÊıÒÔSF_¿ªÍ·
- * ÕâÀïselect²éÑ¯Ïà¶Ô±È½Ï¸´ÔÓ£¬»á³öÏÖ¶àÕÅ±í£¬inner/left/right joinµÈ¶àÖÖÇé¿ö£¬ËùÒÔµ¥¶À×öÒ»±é²éÑ¯
- * ËùÒÔ¶ÔÒ»¸öÎÄ¼ş»á³öÏÖ±éÀúÁ½±éµÄÇé¿ö£¬ÕâÑù»á±È½ÏºÃ
+ * è·å–æ–‡ä»¶ä¸­æ“ä½œçš„è¡¨å
+ * åŠŸèƒ½ï¼š
+ * 	å°†åˆ¶å®šæ–‡ä»¶ï¼ˆæ¯”å¦‚ï¼šxmlã€htmlã€javaï¼‰ä¸­æ¶‰åŠåˆ°è¡¨çš„æ“ä½œï¼ˆè¿™é‡Œçš„æ“ä½œï¼ŒæŒ‡çš„æ˜¯å…¶ä¸­çš„insertã€updateã€mergeã€deleteã€seleteï¼‰æå–å‡ºæ¥
+ * è¿‡æ»¤ï¼Œä¸ºçš„æ˜¯å°†è¡¨å¿«é€Ÿæå–ï¼Œæ–¹ä¾¿åˆ†æè¿™äº›æ–‡ä»¶æ€»å…±æ“ä½œäº†å“ªäº›è¡¨
+ * è¿™é‡Œinsertã€updateã€mergeã€deleteåˆèµ·æ¥æŸ¥è¯¢ï¼Œè¿™äº›æ“ä½œä¸€èˆ¬å°±è·Ÿåœ¨åé¢çš„ä¸€å¼ è¡¨ï¼Œä¸ä¼šå‡ºç°ä¸€è¡Œæ“ä½œå¤šå¼ è¡¨çš„æƒ…å†µï¼Œæ‰€ä»¥åˆåœ¨ä¸€èµ·
+ * è¿™é‡Œçš„procedureã€functionæ˜¯æœ‰å…·ä½“ç‰¹å¾çš„ï¼Œæ¯ä¸ªç³»ç»Ÿéƒ½ä¸ä¸€æ ·ï¼Œæ‰€ä»¥è¿™é‡Œéœ€è¦ä¿®æ”¹ï¼Œå¦‚ç°åœ¨é¡¹ç›®å­˜å‚¨è¿‡ç¨‹ä»¥SP_å¼€å¤´ï¼Œå‡½æ•°ä»¥SF_å¼€å¤´
+ * è¿™é‡ŒselectæŸ¥è¯¢ç›¸å¯¹æ¯”è¾ƒå¤æ‚ï¼Œä¼šå‡ºç°å¤šå¼ è¡¨ï¼Œinner/left/right joinç­‰å¤šç§æƒ…å†µï¼Œæ‰€ä»¥å•ç‹¬åšä¸€éæŸ¥è¯¢
+ * æ‰€ä»¥å¯¹ä¸€ä¸ªæ–‡ä»¶ä¼šå‡ºç°éå†ä¸¤éçš„æƒ…å†µï¼Œè¿™æ ·ä¼šæ¯”è¾ƒå¥½
  * @author cyy
  * @date  20191010
  */
 public class GetTableFromSb {
-	private HashMap<String,Object> allTableMap = new HashMap();//ËùÓĞ±íµÄÏà¹Ø±í
-	private HashMap<String,Object> insertMap = new HashMap();//insertµÄÏà¹Ø±í
-	private HashMap<String,Object> updateMap = new HashMap();//updateµÄÏà¹Ø±í
-	private HashMap<String,Object> mergeMap = new HashMap();//mergeµÄÏà¹Ø±í
-	private HashMap<String,Object> deleteMap = new HashMap();//deleteµÄÏà¹Ø±í
-	private HashMap<String,Object> selectMap = new HashMap();//selectµÄÏà¹Ø±í
-	private HashMap<String,Object> procedureMap = new HashMap();//procedureµÄÏà¹Ø±í
-	private HashMap<String,Object> functionMap = new HashMap();//functionµÄÏà¹Ø±í
+	private HashMap<String,Object> allTableMap = new HashMap();//æ‰€æœ‰è¡¨çš„ç›¸å…³è¡¨
+	private HashMap<String,Object> insertMap = new HashMap();//insertçš„ç›¸å…³è¡¨
+	private HashMap<String,Object> updateMap = new HashMap();//updateçš„ç›¸å…³è¡¨
+	private HashMap<String,Object> mergeMap = new HashMap();//mergeçš„ç›¸å…³è¡¨
+	private HashMap<String,Object> deleteMap = new HashMap();//deleteçš„ç›¸å…³è¡¨
+	private HashMap<String,Object> selectMap = new HashMap();//selectçš„ç›¸å…³è¡¨
+	private HashMap<String,Object> procedureMap = new HashMap();//procedureçš„ç›¸å…³è¡¨
+	private HashMap<String,Object> functionMap = new HashMap();//functionçš„ç›¸å…³è¡¨
 	
 	/**
-	 * »ñÈ¡ËùÓĞµÄ±í
+	 * è·å–æ‰€æœ‰çš„è¡¨
 	 * @param sb
 	 */
 	public void getAllTable(String sb) {
@@ -37,36 +37,36 @@ public class GetTableFromSb {
 	
 	
 	/**
-	 * »ñÈ¡´æ´¢¹ı³Ì¡¢xmlµÈxmlÎÄ¼şÖĞµÄ±íÃû
-	 * Æ¥ÅäÕıÔò±í´ïÊ½
-	 * ÕıÔò±í´ïÊ½Ö÷ÒªÓĞÕâ¼¸ÖÖ£º
-	 * 1¡¢È¡³öinsertÖĞµÄ±í£¬
-	 *  ¸ñÊ½ÈçÏÂ£º
+	 * è·å–å­˜å‚¨è¿‡ç¨‹ã€xmlç­‰xmlæ–‡ä»¶ä¸­çš„è¡¨å
+	 * åŒ¹é…æ­£åˆ™è¡¨è¾¾å¼
+	 * æ­£åˆ™è¡¨è¾¾å¼ä¸»è¦æœ‰è¿™å‡ ç§ï¼š
+	 * 1ã€å–å‡ºinsertä¸­çš„è¡¨ï¼Œ
+	 *  æ ¼å¼å¦‚ä¸‹ï¼š
 	 *  	1)INSERT INTO XXX (COL1,COL2...)
 	 *  	2)INSERT INTO XXX SELECT XXX
-	 * 	ÕıÔò±í´ïÊ½ÈçÏÂ£ºINSERT\s+INTO\s+(\b\w+\b) -> È¡³ögroup(1)
+	 * 	æ­£åˆ™è¡¨è¾¾å¼å¦‚ä¸‹ï¼šINSERT\s+INTO\s+(\b\w+\b) -> å–å‡ºgroup(1)
 	 * 
-	 * 2¡¢È¡³öupdateÖĞµÄ±í,
-	 *	¸ñÊ½ÈçÏÂ£º
-	 *		1£©UPDATE XXX SET ...
-	 *		2£©MERGE INTO XXX 
-	 *		3£©ÅÅ³ıµô MERGE INTO XXXX CONDITION THEN UPDATE SET...
-	 *		4£©ÕâÀïĞèÒª¿¼ÂÇupdateÕâÖÖÇé¿ö  when matched then update set a.clt_zmt = xxx...
-	 * 	ÕıÔò±í´ïÊ½ÈçÏÂ£º
-	 * 		1£©UPDATE\s+(\b\w+\b)(|\s+\b\w+\b)\s+SET  ->È¡³ögroup(1)
-	 * 		2£©MERGE\s+INTO\s+(\b\w+\b) ->È¡³ögroup(1)
+	 * 2ã€å–å‡ºupdateä¸­çš„è¡¨,
+	 *	æ ¼å¼å¦‚ä¸‹ï¼š
+	 *		1ï¼‰UPDATE XXX SET ...
+	 *		2ï¼‰MERGE INTO XXX 
+	 *		3ï¼‰æ’é™¤æ‰ MERGE INTO XXXX CONDITION THEN UPDATE SET...
+	 *		4ï¼‰è¿™é‡Œéœ€è¦è€ƒè™‘updateè¿™ç§æƒ…å†µ  when matched then update set a.clt_zmt = xxx...
+	 * 	æ­£åˆ™è¡¨è¾¾å¼å¦‚ä¸‹ï¼š
+	 * 		1ï¼‰UPDATE\s+(\b\w+\b)(|\s+\b\w+\b)\s+SET  ->å–å‡ºgroup(1)
+	 * 		2ï¼‰MERGE\s+INTO\s+(\b\w+\b) ->å–å‡ºgroup(1)
 	 * 
-	 * 3¡¢È¡³ödeleteÖĞµÄ±í
-	 * 	¸ñÊ½ÈçÏÂ£º1£©DELETE FROM XXX WHERE ....
-	 * 	ÕıÔò±í´ïÊ½ÈçÏÂ£ºDELETE\s+FROM\s+(\b\w+\b)	->È¡³ögroup(1)
+	 * 3ã€å–å‡ºdeleteä¸­çš„è¡¨
+	 * 	æ ¼å¼å¦‚ä¸‹ï¼š1ï¼‰DELETE FROM XXX WHERE ....
+	 * 	æ­£åˆ™è¡¨è¾¾å¼å¦‚ä¸‹ï¼šDELETE\s+FROM\s+(\b\w+\b)	->å–å‡ºgroup(1)
 	 * 
-	 * 4¡¢È¡³ö´æ´¢¹ı³Ì/º¯Êı
-	 * 	¸ñÊ½ÈçÏÂ£º
-	 * 		1£©SP_XXX_XXX
-	 * 		2£©SF_XXX_XXX
-	 * 	ÕıÔò±í´ïÊ½:
-	 * 		(SP_\w+\b)  ->È¡³ögroup(1)
-	 * 		(SF_\w+\b)  ->È¡³ögroup(1)
+	 * 4ã€å–å‡ºå­˜å‚¨è¿‡ç¨‹/å‡½æ•°
+	 * 	æ ¼å¼å¦‚ä¸‹ï¼š
+	 * 		1ï¼‰SP_XXX_XXX
+	 * 		2ï¼‰SF_XXX_XXX
+	 * 	æ­£åˆ™è¡¨è¾¾å¼:
+	 * 		(SP_\w+\b)  ->å–å‡ºgroup(1)
+	 * 		(SF_\w+\b)  ->å–å‡ºgroup(1)
 	 */
 	public void getOpeTable(String sb) {
 		String pattern = "INSERT\\s+INTO\\s+(\\b\\w+\\b)|UPDATE\\s+(\\b\\w+\\b)(|\\s+\\b\\w+\\b)\\s+SET|MERGE\\s+INTO\\s+(\\b\\w+\\b)|DELETE\\s+FROM\\s+(\\b\\w+\\b)|(SP_\\w+\\b)|(SF_\\w+\\b)";
@@ -98,23 +98,23 @@ public class GetTableFromSb {
 	}
 	
 	/**
-	 * ÕıÔò±í´ïÊ½
-	 * 1¡¢È¡³öselectÖĞµÄ±í
-	 * 	¸ñÊ½ÈçÏÂ£º
-	 * 	1£©SELECT XXX FROM SYS_DICT A,SYS_USER B,SYS_CONFIG C...
-	 * 	2£©SELECT XXX FROM SYS_DICT A,SYS_USER B LEFT JOIN SYS_MENU M ON M.ID = A.ID....
+	 * æ­£åˆ™è¡¨è¾¾å¼
+	 * 1ã€å–å‡ºselectä¸­çš„è¡¨
+	 * 	æ ¼å¼å¦‚ä¸‹ï¼š
+	 * 	1ï¼‰SELECT XXX FROM SYS_DICT A,SYS_USER B,SYS_CONFIG C...
+	 * 	2ï¼‰SELECT XXX FROM SYS_DICT A,SYS_USER B LEFT JOIN SYS_MENU M ON M.ID = A.ID....
 	 * 
-	 * 2¡¢ÕıÔò±í´ïÊ½ËµÃ÷ÈçÏÂ£º·ÖÁ½²½×ß£¬µÚÒ»²½ÕÒ³ö³¤´®£¬µÚ¶ş²½¸ù¾İ¶ººÅ·Ö¸î£¬µÚÈı²½ÔÚ½âÎö¶ÔÓ¦µÄ±í³öÀ´
-	 *  1)µÚÒ»²½ÕıÔò´ÓFROMºóÃæ¿ªÊ¼( A , XXX)ÓÉ¶à¸öÕâ¸ö×é³É
-	 *  2)µÚ¶ş²½°ÑÕû¸ö´ó´®Õû¸öÈ¡³öÀ´,Ê¹ÓÃ¶ººÅ·Ö¸ô
-	 *  3)µÚÈı²½£¬È¡³ö¾ßÌåµÄ±í
+	 * 2ã€æ­£åˆ™è¡¨è¾¾å¼è¯´æ˜å¦‚ä¸‹ï¼šåˆ†ä¸¤æ­¥èµ°ï¼Œç¬¬ä¸€æ­¥æ‰¾å‡ºé•¿ä¸²ï¼Œç¬¬äºŒæ­¥æ ¹æ®é€—å·åˆ†å‰²ï¼Œç¬¬ä¸‰æ­¥åœ¨è§£æå¯¹åº”çš„è¡¨å‡ºæ¥
+	 *  1)ç¬¬ä¸€æ­¥æ­£åˆ™ä»FROMåé¢å¼€å§‹( A , XXX)ç”±å¤šä¸ªè¿™ä¸ªç»„æˆ
+	 *  2)ç¬¬äºŒæ­¥æŠŠæ•´ä¸ªå¤§ä¸²æ•´ä¸ªå–å‡ºæ¥,ä½¿ç”¨é€—å·åˆ†éš”
+	 *  3)ç¬¬ä¸‰æ­¥ï¼Œå–å‡ºå…·ä½“çš„è¡¨
 	 * note:
-	 * 	1£©ÕâÀïÓĞ¸öÎÊÌâ¾ÍÊÇÈç¹ûÊÇ»á³ö»»ĞĞ·û¾ÍÓĞµã¸ã²»¶¨ÁË£¬Ò»¸öºÃµÄ·½·¨¾ÍÊÇ½âÎöStringBufferµÄÊ±ºò£¬²»¼Ó\n\t£¬Á¬Ğø¶ÁÈ¡µ½ÄÚ´æÖĞ
-	 * 	2£©È¥µôdelete fromºóµÄ±í£¨ÆäÊµÕâ¸ö²»È¥µôÒ²¿ÉÒÔµÄ£¬·´Õı¶¼ÊÇ±í£¬¶àÒ»¸öÒ²ÎŞËùÎ½£©
-	 * 3¡¢ÕıÔò±í´ïÊ½ÈçÏÂ
-	 * 	µÚÒ»²½£º(?<!DELETE)\s+FROM\s+((\b\w+\b)(\s*\b\w+\b\s*,\s*(\b\w+\b))*)|(LEFT|RIGHT|INNER)\s+JOIN\s+(\b\w+\b)
-	 * 	µÚ¶ş²½£ºSYS_DICT A,SYS_USER B,SYS_CONFIG C   -> group(1).toString().split(",");
-	 *  µÚÈı²½£º\s*(\b\w+\b)  ->group(1)
+	 * 	1ï¼‰è¿™é‡Œæœ‰ä¸ªé—®é¢˜å°±æ˜¯å¦‚æœæ˜¯ä¼šå‡ºæ¢è¡Œç¬¦å°±æœ‰ç‚¹æä¸å®šäº†ï¼Œä¸€ä¸ªå¥½çš„æ–¹æ³•å°±æ˜¯è§£æStringBufferçš„æ—¶å€™ï¼Œä¸åŠ \n\tï¼Œè¿ç»­è¯»å–åˆ°å†…å­˜ä¸­
+	 * 	2ï¼‰å»æ‰delete fromåçš„è¡¨ï¼ˆå…¶å®è¿™ä¸ªä¸å»æ‰ä¹Ÿå¯ä»¥çš„ï¼Œåæ­£éƒ½æ˜¯è¡¨ï¼Œå¤šä¸€ä¸ªä¹Ÿæ— æ‰€è°“ï¼‰
+	 * 3ã€æ­£åˆ™è¡¨è¾¾å¼å¦‚ä¸‹
+	 * 	ç¬¬ä¸€æ­¥ï¼š(?<!DELETE)\s+FROM\s+((\b\w+\b)(\s*\b\w+\b\s*,\s*(\b\w+\b))*)|(LEFT|RIGHT|INNER)\s+JOIN\s+(\b\w+\b)
+	 * 	ç¬¬äºŒæ­¥ï¼šSYS_DICT A,SYS_USER B,SYS_CONFIG C   -> group(1).toString().split(",");
+	 *  ç¬¬ä¸‰æ­¥ï¼š\s*(\b\w+\b)  ->group(1)
 	 *
 	 */
 	public void getSelectTable(String sb) {
@@ -127,14 +127,14 @@ public class GetTableFromSb {
 		int i=0;
 		String tableName = "";
 		while(m1.find()) {
-			if(m1.group(5)!=null) {//Èç¹ûÊÇleft/right/inner join xxxµÄÇé¿öÏÂ
+			if(m1.group(5)!=null) {//å¦‚æœæ˜¯left/right/inner join xxxçš„æƒ…å†µä¸‹
 				tableName = m1.group(6);
 				selectMap.put(tableName, tableName);
-			}else {//Èç¹ûÊÇtable1 t1, table2 t2, table3 t3...µÄÇé¿öÏÂ
+			}else {//å¦‚æœæ˜¯table1 t1, table2 t2, table3 t3...çš„æƒ…å†µä¸‹
 				tableName = m1.group(2);
 				selectMap.put(tableName, tableName);
 				
-				if(m1.group(3)!=null) {//´æÔÚ²éÑ¯¶àÕÅ±íµÄÇé¿öÏÂ²ÅÖ´ĞĞÏÂÃæµÄ´úÂë
+				if(m1.group(3)!=null) {//å­˜åœ¨æŸ¥è¯¢å¤šå¼ è¡¨çš„æƒ…å†µä¸‹æ‰æ‰§è¡Œä¸‹é¢çš„ä»£ç 
 					String secondStr = m1.group(1);
 					String[] secondTables = secondStr.split(",");
 					for(int j=0,len=secondTables.length;j<len;j++) {

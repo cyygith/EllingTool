@@ -10,33 +10,33 @@ import com.elling.tableOperator.utils.FileUtil;
 import com.elling.tableOperator.utils.StringBufUtil;
 
 /**
- * ²âÊÔ¸üĞÂÌæ»»¶ÔÓ¦µÄ±í
+ * æµ‹è¯•æ›´æ–°æ›¿æ¢å¯¹åº”çš„è¡¨
  * @author Administrator
  *
  */
 public class UpdateFileTest {
 	public static void main(String[] args) {
-		String sourcePath = "E:\\WORK\\workspace\\EllingTool\\src";//¶ÁÈ¡µÄÎ»ÖÃ£¨ÊÊÓÃÓÚ´ÅÅÌÄÚÈİ¶ÁÈ¡£©
-		String savePath = "C:\\Users\\Administrator\\Desktop\\operate";//±£´æ×îºó¸üĞÂµÄÎÄ¼şÎ»ÖÃ
+		String sourcePath = "E:\\WORK\\workspace\\EllingTool\\src";//è¯»å–çš„ä½ç½®ï¼ˆé€‚ç”¨äºç£ç›˜å†…å®¹è¯»å–ï¼‰
+		String savePath = "C:\\Users\\Administrator\\Desktop\\operate";//ä¿å­˜æœ€åæ›´æ–°çš„æ–‡ä»¶ä½ç½®
 		String suffix = "_DZG";
 		
-		//1¡¢·ÖÎö³öÀ´µÄĞèÒªÌæ»»µÄ±íÕûÀí³öÀ´£¬²éÑ¯µÄÊ±ºò²»ÒªÓĞ»»ĞĞ£¬Ìæ»»µÄÊ±ºò±£´æÔ­ÓĞ»»ĞĞ¸ñÊ½,ÕâÑù¾Í¿ÉÒÔ±È½ÏÍêÕûµÄ½â¾ö¸ñÊ½ÎÊÌâ
-		String[] forReplaceArr = new String[] {"SYS_USER","SYS_DICT"};//ĞèÒªÌæ»»µÄ×Ö¶Î
-		String[] replaceArr = new String[] {"SYS_USER_DZG","SYS_DICT_N_DZG"};//Ìæ»»³ÉµÄ×Ö¶Î
+		//1ã€åˆ†æå‡ºæ¥çš„éœ€è¦æ›¿æ¢çš„è¡¨æ•´ç†å‡ºæ¥ï¼ŒæŸ¥è¯¢çš„æ—¶å€™ä¸è¦æœ‰æ¢è¡Œï¼Œæ›¿æ¢çš„æ—¶å€™ä¿å­˜åŸæœ‰æ¢è¡Œæ ¼å¼,è¿™æ ·å°±å¯ä»¥æ¯”è¾ƒå®Œæ•´çš„è§£å†³æ ¼å¼é—®é¢˜
+		String[] forReplaceArr = new String[] {"SYS_USER","SYS_DICT"};//éœ€è¦æ›¿æ¢çš„å­—æ®µ
+		String[] replaceArr = new String[] {"SYS_USER_DZG","SYS_DICT_N_DZG"};//æ›¿æ¢æˆçš„å­—æ®µ
 		
-		//2¡¢°ÑĞèÒªÌæ»»µÄ×Ö¶ÎÊı×é·Åµ½Ò»¸öMapÖĞ
+		//2ã€æŠŠéœ€è¦æ›¿æ¢çš„å­—æ®µæ•°ç»„æ”¾åˆ°ä¸€ä¸ªMapä¸­
 		HashMap replaceMap = new HashMap();
 		for(int i=0,len = replaceArr.length;i<len;i++) {
 			replaceMap.put(forReplaceArr[i], replaceArr[i]);
 		}
 		
-		//3¡¢È¡³öĞèÒªÌæ»»µÄÎÄ¼ş£¨£©
+		//3ã€å–å‡ºéœ€è¦æ›¿æ¢çš„æ–‡ä»¶ï¼ˆï¼‰
 		FileUtil fileUtil = new FileUtil();
 		fileUtil.find(sourcePath, 1, "sql|xml");
 		ArrayList<Map> fileList = fileUtil.getListMap();
-		System.out.println("ĞèÒªÌæ»»µÄÎÄ¼şÓĞ¶àÉÙ¸ö£º"+fileList.size());
+		System.out.println("éœ€è¦æ›¿æ¢çš„æ–‡ä»¶æœ‰å¤šå°‘ä¸ªï¼š"+fileList.size());
 		
-		//4¡¢¿ªÊ¼Ìæ»»
+		//4ã€å¼€å§‹æ›¿æ¢
 		UpdateXmlUseReg updateXml = new UpdateXmlUseReg();
 		StringBuffer sb = null;
 		for(int i=0,len=fileList.size();i<len;i++) {
@@ -51,7 +51,7 @@ public class UpdateFileTest {
 			}
 			sb = StringBufUtil.getSbFromDisk(path,StringBufUtil.KEEPFORMAT);
 			StringBuffer sbb = updateXml.operateXml(sb, forReplaceArr, replaceMap);
-			FileUtil.saveFile(savePath, name+suffix, sbb);//¸üĞÂÍê±£´æµ½Ö¸¶¨ÎÄ¼ş¼Ğ
+			FileUtil.saveFile(savePath, name+suffix, sbb);//æ›´æ–°å®Œä¿å­˜åˆ°æŒ‡å®šæ–‡ä»¶å¤¹
 		}
 		
 	}

@@ -8,13 +8,13 @@ import java.io.InputStreamReader;
 import com.elling.database.QueryOracleTable;
 
 public class StringBufUtil {
-	//±£³ÖÔ­ÓĞ¸ñÊ½
+	//ä¿æŒåŸæœ‰æ ¼å¼
 	public static boolean KEEPFORMAT = true;
-	//²»±£³ÖÔ­ÓĞ¸ñÊ½-¼´»Ø³µ»»ĞĞ·ûÈ¥µô
+	//ä¸ä¿æŒåŸæœ‰æ ¼å¼-å³å›è½¦æ¢è¡Œç¬¦å»æ‰
 	public static boolean NO_KEEPFORMAT = false;
 	/**
-	 * ´ÓÊı¾İ¿âÖĞÈ¡³öÎÄµµÁ÷£¨Èç£º´æ´¢¹ı³ÌÁ÷£©
-	 * @param pName  ´æ´¢¹ı³ÌÃû
+	 * ä»æ•°æ®åº“ä¸­å–å‡ºæ–‡æ¡£æµï¼ˆå¦‚ï¼šå­˜å‚¨è¿‡ç¨‹æµï¼‰
+	 * @param pName  å­˜å‚¨è¿‡ç¨‹å
 	 */
 	public static StringBuffer getSbFromDatabase(String pName) {
 		StringBuffer sb = new StringBuffer();
@@ -27,8 +27,8 @@ public class StringBufUtil {
 		return sb;
 	}
 	/**
-	 * ´Ó´ÅÅÌÖĞÈ¡³öÎÄµµÁ÷
-	 * @param path	ÎÄ¼şÂ·¾¶£¨ÕâÀïÖ¸µÄÊÇÍêÕûµÄ´æÔÚµÄÎÄ¼şµÄÂ·¾¶£©
+	 * ä»ç£ç›˜ä¸­å–å‡ºæ–‡æ¡£æµ
+	 * @param path	æ–‡ä»¶è·¯å¾„ï¼ˆè¿™é‡ŒæŒ‡çš„æ˜¯å®Œæ•´çš„å­˜åœ¨çš„æ–‡ä»¶çš„è·¯å¾„ï¼‰
 	 * @return
 	 */
 	public static StringBuffer getSbFromDisk(String path,boolean keepFormat) {

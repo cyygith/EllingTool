@@ -19,25 +19,25 @@ public class SyncO {
 	
 	public  void doSynchronizedThings(){
 		synchronized(SyncO.class){
-			System.out.println(this.name+":do 同步事情   start  ************ ");
+			System.out.println(this.name+":do 鍚屾浜嬫儏   start  ************ ");
 			try{
 				Thread.sleep(1000);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-			System.out.println(this.name+":do 同步事情   end  ************ ");
+			System.out.println(this.name+":do 鍚屾浜嬫儏   end  ************ ");
 		}
 	}
 	
 	
 	public void doAnother(){
-		System.out.println(this.name+":同步完成做其他事情了 start...");
+		System.out.println(this.name+":鍚屾瀹屾垚鍋氬叾浠栦簨鎯呬簡 start...");
 		try{
 			Thread.sleep(1000);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		System.out.println(this.name+":同步完成做其他事情了 end...");
+		System.out.println(this.name+":鍚屾瀹屾垚鍋氬叾浠栦簨鎯呬簡 end...");
 	}
 	
 	

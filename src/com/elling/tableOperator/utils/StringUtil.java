@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class StringUtil {
 	/**
-	 * ¸ù¾İÖ¸¶¨×Ö·û·Ö¸ô£¬×éºÏ³ÉĞèÒªµÄ´®
-	 * Èç£º["sys_user","sys_dict"] -> 'sys_user','sys_dict'
+	 * æ ¹æ®æŒ‡å®šå­—ç¬¦åˆ†éš”ï¼Œç»„åˆæˆéœ€è¦çš„ä¸²
+	 * å¦‚ï¼š["sys_user","sys_dict"] -> 'sys_user','sys_dict'
 	 * @param arr
 	 * @return
 	 */
@@ -22,8 +22,8 @@ public class StringUtil {
 		return sb;
 	}
 	/**
-	 * ¸ù¾İÖ¸¶¨×Ö·û·Ö¸ô£¬×éºÏ³ÉĞèÒªµÄ´®
-	 * Èç£º["sys_user","sys_dict"] -> 'sys_user','sys_dict'
+	 * æ ¹æ®æŒ‡å®šå­—ç¬¦åˆ†éš”ï¼Œç»„åˆæˆéœ€è¦çš„ä¸²
+	 * å¦‚ï¼š["sys_user","sys_dict"] -> 'sys_user','sys_dict'
 	 * @param arr
 	 * @return
 	 */
@@ -38,8 +38,8 @@ public class StringUtil {
 		return sb;
 	}
 	/**
-	 * ¸ù¾İÖ¸¶¨×Ö·û·Ö¸ô£¬×éºÏ³ÉĞèÒªµÄ´®
-	 * Èç£º["sys_user","sys_dict"] -> 'sys_user','sys_dict'
+	 * æ ¹æ®æŒ‡å®šå­—ç¬¦åˆ†éš”ï¼Œç»„åˆæˆéœ€è¦çš„ä¸²
+	 * å¦‚ï¼š["sys_user","sys_dict"] -> 'sys_user','sys_dict'
 	 * @param arr
 	 * @return
 	 */
@@ -57,7 +57,7 @@ public class StringUtil {
 	}
 	
 	/**
-	 * Æ´Ğ´³ÉÕıÔò±í´ïÊ½´®£¬Èç£ºnew String[]{"aaa","bbb"} --> aaa|bbb
+	 * æ‹¼å†™æˆæ­£åˆ™è¡¨è¾¾å¼ä¸²ï¼Œå¦‚ï¼šnew String[]{"aaa","bbb"} --> aaa|bbb
 	 * @param arr
 	 * @return
 	 */
@@ -75,7 +75,7 @@ public class StringUtil {
 	}
 	
 	/**
-	 * ²âÊÔ
+	 * æµ‹è¯•
 	 * @param args
 	 */
 	public static void main(String[] args) {

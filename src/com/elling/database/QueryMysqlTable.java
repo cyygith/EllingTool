@@ -25,17 +25,17 @@ public class QueryMysqlTable {
 		return conn;
 	}
 	/**
-	 * »ñÈ¡Á¬½Ó
+	 * è·å–è¿æ¥
 	 * @return
 	 */
 	public Connection createConn() {
 		Connection conn = null;
 		try {
 			Class.forName(driver);
-			System.out.println("³É¹¦¼ÓÔØOracleSQLÇı¶¯");
+			System.out.println("æˆåŠŸåŠ è½½OracleSQLé©±åŠ¨");
 			
 			conn = DriverManager.getConnection(url,user,password);
-			System.out.println("³É¹¦Á¬½Óµ½Êı¾İ¿â");
+			System.out.println("æˆåŠŸè¿æ¥åˆ°æ•°æ®åº“");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -43,23 +43,23 @@ public class QueryMysqlTable {
 	}
 	
 	/**
-	 * ¸ù¾İsqlÓï¾ä£¬»ñÈ¡Êı¾İ¿âÖĞµÄÊı¾İ£¬ÕâÀï·µ»ØµÄÎªListÀàĞÍµÄMapÊı¾İ½á¹¹
-	 * ÆäËû¸´ÔÓµÄ½á¹¹¿ÉÒÔÊ¹ÓÃmybatisµÈ¿ò¼Ü²Ù×÷
+	 * æ ¹æ®sqlè¯­å¥ï¼Œè·å–æ•°æ®åº“ä¸­çš„æ•°æ®ï¼Œè¿™é‡Œè¿”å›çš„ä¸ºListç±»å‹çš„Mapæ•°æ®ç»“æ„
+	 * å…¶ä»–å¤æ‚çš„ç»“æ„å¯ä»¥ä½¿ç”¨mybatisç­‰æ¡†æ¶æ“ä½œ
 	 * @param sql
 	 * @param arr
 	 * @return
 	 */
 	public List<Map<String,Object>> getBySql(String sql,String[] arr){
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-		Connection conn = createConn();//ÕâÀï¿ÉÒÔÓÅ»¯£¬²»ĞèÒªÃ¿´Î¶¼´ÓĞÂ½¨£¬ÖÁÓÚÔõÃ´Éè¼ÆÖ®ºóÔÙ¿´
+		Connection conn = createConn();//è¿™é‡Œå¯ä»¥ä¼˜åŒ–ï¼Œä¸éœ€è¦æ¯æ¬¡éƒ½ä»æ–°å»ºï¼Œè‡³äºæ€ä¹ˆè®¾è®¡ä¹‹åå†çœ‹
 		PreparedStatement pstat = null;
 		ResultSet rs = null;
 		ResultSetMetaData md = null;
 		try {
 			pstat = conn.prepareStatement(sql);
-			System.out.println("²éÑ¯µÄsqlÎª£º"+sql);
+			System.out.println("æŸ¥è¯¢çš„sqlä¸ºï¼š"+sql);
 			
-			//Ñ­»·¸³Öµ²ÎÊı£¬Î»ÖÃĞèÒªÑÏ¸ñ¿ØÖÆ
+			//å¾ªç¯èµ‹å€¼å‚æ•°ï¼Œä½ç½®éœ€è¦ä¸¥æ ¼æ§åˆ¶
 			if(arr!=null&&arr.length>0) {
 				for(int i=0,len=arr.length;i<len;i++) {
 					pstat.setNString((i+1), arr[i]);
@@ -67,7 +67,7 @@ public class QueryMysqlTable {
 			}
 			
 			rs = pstat.executeQuery();
-			md = rs.getMetaData();//´´½¨Êı¾İ¶ÔÏó
+			md = rs.getMetaData();//åˆ›å»ºæ•°æ®å¯¹è±¡
 			int columnCount = md.getColumnCount();
 			while(rs.next()) {
 				Map<String,Object> rowData = new HashMap<String,Object>();
@@ -91,13 +91,13 @@ public class QueryMysqlTable {
 	}
 	
 	/**
-	 * ²âÊÔ
+	 * æµ‹è¯•
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		QueryMysqlTable query = new QueryMysqlTable();
 		
-		//1¡¢¸ù¾İ´«ÈëµÄ±íÃûÁĞ±í£¬²éÑ¯±íµÄÃû³Æ¼°×¢ÊÍ
+		//1ã€æ ¹æ®ä¼ å…¥çš„è¡¨ååˆ—è¡¨ï¼ŒæŸ¥è¯¢è¡¨çš„åç§°åŠæ³¨é‡Š
 		String sql = "SELECT T.COLUMN_NAME,T.COLUMN_COMMENT FROM information_schema.`COLUMNS` T WHERE T.TABLE_NAME = ?";
 		String[] arr = new String[] {"SYS_USER"};
 		List<Map<String,Object>> list = query.getBySql(sql, arr);
